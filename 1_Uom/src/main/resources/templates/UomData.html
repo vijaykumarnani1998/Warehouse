@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">>
+<head>
+</head>
+<body>
+<h3>Welcome to employee Data Page</h3>
+<a th:href="@{/uom/excel}">Excel Export</a>
+<a th:href="@{/uom/pdf}">PDF Export</a>
+<table border="1">
+		<tr>
+			<th>ID</th>
+			<th>Uom Type</th>
+			<th>Uom Model</th>
+			<th>Uom Description</th>
+			<th>Operations</th>
+		</tr>
+		<tr th:each="u:${list}">
+		<td th:text="${u.uomId}"></td>
+	    <td th:text="${u.uomType}"></td>
+	    <td th:text="${u.uomModel}"></td>
+	  	<td th:text="${u.uomDescription}"></td>
+	  		<td>
+	  		<a th:href="@{/uom/delete?id={id} (id=${u.uomId})}">Delete</a>
+	        <a th:href="@{/uom/edit?id={id} (id=${u.uomId})}">Edit</a>
+	    </td>
+	    </tr>
+	</table>
+	<span th:text="${message}"></span>
+</body>
+</html>
