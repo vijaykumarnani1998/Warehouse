@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border=1>
+		<tr>
+			<th>ID</th>
+			<th>Order Code</th>
+			<th>ShipmentCode</th>
+			<th>Vendor</th>
+			<th>Reference Number</th>
+			<th>Quality Check</th>
+			<th>Status</th>
+			<th>Description</th>
+			<th>Actions</th>
+			
+		</tr>
+		<tr th:each="p:${list}">
+			<td th:text="${p.id}"></td>
+			<td th:text="${p.orderCode}"></td>
+			<td th:text="${p.shipment.shipmentId}"></td>
+			<td th:text="${p.userTypeVendor.userId}"></td>
+			<td th:text="${p.referenceNumber}"></td>
+			<td th:text="${p.qualityCheck}"></td>
+			<td th:text="${p.status}"></td>
+			<td th:text="${p.description}"></td>
+			<td><a th:href="@{/purchaseorder/edit?id={id}(id=${p.id})}">Edit</a>
+				<a th:href="@{/purchaseorder/delete?id={id}(id=${p.id})}">Delete</a>
+								<a th:href="@{/purchaseorder/addparts?id={id}(id=${p.id})}">Add Parts</a>
+				</td>
+		</tr>
+	</table>
+	<span th:text="${message}"></span>
+</body>
+</html>

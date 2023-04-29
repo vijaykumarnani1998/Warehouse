@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border=1>
+		<tr>
+			<th>PART ID</th>
+			<th>PART CODE</th>
+			<th>PART DIMENSIONS</th>
+			<th>BASE COST</th>
+			<th>BASE CURRENCY</th>
+			<th>UOM</th>
+			<th>OrderCode(SALE)</th>
+			<th>OrderCode(Purchase)</th>
+			<th>PART DESCRIPTION</th>
+			
+		
+			<th>Actions</th>
+		</tr>
+		<tr th:each="p:${list}">
+			<td th:text="${p.partId}"></td>
+			<td th:text="${p.partCode}"></td>
+			<td th:text="${p.partLength+'(L)'+p.partWidth+'(W)'+p.partHeight+'(H)'}"></td>
+			<td th:text="${p.partBaseCost}"></td>
+			<td th:text="${p.partBaseCurrency}"></td>
+			<td th:text="${p.uom}"></td>
+			<td th:text="${p.ordercodesale}"></td>
+			<td th:text="${p.ordercodepurchase}"></td>
+			<td th:text="${p.partDescription}"></td>
+			<td><a th:href="@{/part/edit?id={id}(id=${p.partId})}">Edit</a>
+				<a th:href="@{/part/delete?id={id}(id=${p.partId})}">Delete</a>
+				</td>
+		</tr>
+	</table>
+	<span th:text="${message}"></span>
+</body>
+</html>

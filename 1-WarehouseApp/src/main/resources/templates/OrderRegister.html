@@ -10,6 +10,8 @@
             <div class="card-header">
             <h3>Welcome to Order Register page</h3>
             </div>
+            <a th:href="@{/order/all}"> GetAll Orders</a>
+            
             <div class="card-body">
 <form id="orderRegForm" th:action="@{/order/save}" method="post" th:object="${order}">
     <!-- 1st row -->

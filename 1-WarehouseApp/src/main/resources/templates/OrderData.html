@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h3>Welcome to Order Data page</h3>
+</body>
+<a th:href="@{/order/excel}">Excel Export</a>
+<a th:href="@{/order/pdf}">PDF Export</a>
+<table border="1">
+<tr>
+<th>Order ID </th>
+<th>Order Mode</th>
+<th>Order Code</th>
+<th>Order Method</th>
+<th>Order Accept</th>
+<th>Order Description</th>
+<th>Order Operations</th>
+</tr>
+<tr th:each="o:${list}" >
+    <td th:text="${o.orderId}"></td>
+    <td th:text="${o.orderMode}"></td>
+   <td th:text="${o.orderCode}"></td>
+    <td th:text="${o.orderMethod}"></td>
+     <td th:text="${o.orderAccept}"></td>
+      <td th:text="${o.orderDescription}"></td>
+    <td>
+    <a th:href="@{/order/delete?id={id}(id=${o.orderId})}">Delete </a>|
+     <a th:href="@{/order/edit?id={id}(id=${o.orderId})}">Edit </a>
+    </td>
+   
+
+</tr>
+</table>
+<span th:text="${message}"></span>
+</body>
+</html>

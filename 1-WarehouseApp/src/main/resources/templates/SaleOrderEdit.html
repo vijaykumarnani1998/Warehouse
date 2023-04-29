@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="card">
+			<div class="card-header">
+				<h3>Welcome to SaleOrder Edit Page</h3>
+				<a th:href="@{/saleOrder/all}"> GetAll Sale  Orders</a>
+			</div>
+
+			<div class="card-body">
+				<form th:action="@{/saleOrder/update}" method="post" th:object="${saleOrder}">
+				
+				<div class="row">
+						<div class="col-4">
+							<label>ID </label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="*{id}" class="form-control"/>
+						</div>
+						<div class="col-4">
+						</div>
+
+					</div> 
+				
+					<!-- 1st row -->
+					<div class="row">
+						<div class="col-4">
+							<label>Order Code</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="*{orderCode}" id="orderCode"class="form-control"/>
+						</div>
+						<div class="col-4">
+						</div>
+
+					</div>
+					
+					<div class="row">
+						<div class="col-4">
+							<label>Shipment Code</label>
+						</div>
+						<div class="col-4">
+							<select th:field="*{shipment.shipmentId}" class="form-control">
+							<option value="">-SELECT-</option>
+							<option th:each="po:${shipments}" th:value="${po.key}"  th:text="${po.value}"></option>
+							</select>
+						</div>
+						<div class="col-4">
+						</div>
+						
+						</div>
+						<div class="row">
+						<div class="col-4">
+							<label>Select Customer </label>
+						</div>
+						<div class="col-4">
+							<select th:field="*{userTypeCustomer.userId}" class="form-control">
+							<option value="">-SELECT-</option>
+							<option th:each="po:${userTypeCustomers}" th:value="${po.key}"  th:text="${po.value}"></option>
+							</select>
+						</div>
+						<div class="col-4">
+						</div>
+						
+						</div>
+						
+					
+					<!-- 2nd row -->
+					<div class="row">
+						<div class="col-4">
+							<label> Reference Number</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="*{referenceNumber}"
+								id="referenceNumber" class="form-control"/>
+						</div>
+						<div class="col-4"></div>
+
+					</div>
+					<!-- 3rd row -->
+					<div class="row">
+						<div class="col-4">
+							<label>Stock Mode</label>
+						</div>
+						<div class="col-4">
+							<input type="radio" th:field="*{stockMode}" value="Grade" />Grade
+							<input type="radio" th:field="*{stockMode}" value="Margin" />Margin
+						</div>
+
+						<div class="col-4"></div>
+
+					</div>
+					
+						<div class="row">
+						<div class="col-4">
+							<label>Stock Source</label>
+						</div>
+						<div class="col-5">
+							<select th:field="*{stockSource}" class="form-control" >
+							<option value="">SELECT </option>
+							<option value="OPEN">OPEN </option>
+							<option value="AVAIL">AVAIL </option>
+							<option value="REFUND">REFUND </option>
+							</select>
+							
+
+						</div>
+						<div class="col-3"></div>
+
+					</div>
+					
+					<!-- 4th row -->
+					<div class="row">
+						<div class="col-4">
+							<label>Status</label>
+						</div>
+						<div class="col-5">
+							<input type="text" th:field="*{status}" class="form-control" readonly/>
+
+						</div>
+						<div class="col-3"></div>
+
+					</div>
+
+
+					<div class="row">
+						<div class="col-4">
+							<label> Description</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="*{description}" class="form-control" />
+
+						</div>
+						<div class="col-4"></div>
+
+					</div>
+					<input type="submit" value="Update Sale Order"
+						class="form-control" />
+				</form>
+			</div>
+
+
+
+
+
+		
+		</div>
+	</div>
+</body>
+</html>

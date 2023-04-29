@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border=1>
+		<tr>
+			<th>User ID</th>
+			<th>User Type</th>
+			<th>User Code</th>
+			<th>User For</th>
+			<th>User Email</th>
+			<th>User COntact</th>
+			<th>User ID Type</th>
+			<th>If Other</th>
+			<th>ID Number</th>
+			<th>Actions</th>
+		</tr>
+		<tr th:each="u:${list}">
+			<td th:text="${u.userId}"></td>
+			<td th:text="${u.userType}"></td>
+			<td th:text="${u.userCode}"></td>
+			<td th:text="${u.userFor}"></td>
+			<td th:text="${u.userEmail}"></td>
+			<td th:text="${u.userContact}"></td>
+			<td th:text="${u.userIdType}"></td>
+			<td th:text="${u.ifOther}"></td>
+			<td th:text="${u.userIdNumber}"></td>
+			<td><a th:href="@{/user/edit?id={id}(id=${u.userId})}">Edit</a>
+				<a th:href="@{/user/delete?id={id}(id=${u.userId})}">Delete</a>
+		</tr>
+	</table>
+	<span th:text="${message}"></span>
+</body>
+</html>

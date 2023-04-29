@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border=1>
+		<tr>
+			<th>ID</th>
+			<th>Order Code</th>
+			<th>ShipmentCode</th>
+			<th>Customer</th>
+			<th>Reference Number</th>
+			<th>Stock Mode</th>
+			<th>Stock Source</th>
+			<th>Status</th>
+			<th>Description</th>
+			<th>Actions</th>
+			
+		</tr>
+		<tr th:each="p:${list}">
+			<td th:text="${p.Id}"></td>
+			<td th:text="${p.orderCode}"></td>
+			<td th:text="${p.shipment.shipmentId}"></td>
+			<td th:text="${p.userTypeCustomer.userCode}"></td>
+			<td th:text="${p.referenceNumber}"></td>
+			<td th:text="${p.stockMode}"></td>
+			<td th:text="${p.stockSource}"></td>
+			<td th:text="${p.status}"></td>
+			<td th:text="${p.description}"></td>
+			<td><a th:href="@{/saleOrder/edit?id={id}(id=${p.Id})}">Edit</a>
+				<a th:href="@{/saleOrder/delete?id={id}(id=${p.Id})}">Delete</a>
+				</td>
+		</tr>
+	</table>
+	<span th:text="${message}"></span>
+</body>
+</html>

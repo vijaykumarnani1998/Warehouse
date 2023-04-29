@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="card">
+			<div class="card-header">
+				<h3>Welcome to Part Register page</h3>
+				<a th:href="@{/part/all}"> GetAll Parts</a>
+			</div>
+
+			<div class="card-body">
+				<form th:action="@{/part/save}" method="post" th:object="${part}">
+					<!-- 1st row -->
+					<div class="row">
+						<div class="col-4">
+							<label>Part Code</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="*{partCode}" id="partCode"
+								class="form-control">
+
+						</div>
+						<div class="col-4">
+							<span id="partCodeError"></span>
+						</div>
+
+					</div>
+					<!-- 2nd row -->
+					<div class="row">
+						<div class="col-4">
+							<label> Part Dimensions:</label>
+						</div>
+						<div class="col-4">
+							Length:<input type="text" th:field="*{partLength}"
+								id="partLength" class="form-control"> Width :<input
+								type="text" th:field="*{partWidth}" id="partWidth"
+								class="form-control"> Height:<input type="text"
+								th:field="*{partHeight}" id="partHeight" class="form-control">
+
+						</div>
+						<div class="col-4"></div>
+
+					</div>
+					<!-- 3rd row -->
+					<div class="row">
+						<div class="col-4">
+							<label>Base Cost</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="*{partBaseCost}" id="partBaseCost"
+								class="form-control">
+						</div>
+
+						<div class="col-4"></div>
+
+					</div>
+					<!-- 4th row -->
+					<div class="row">
+						<div class="col-4">
+							<label>Base Currency</label>
+						</div>
+						<div class="col-5">
+							<select th:field="*{partBaseCurrency}" class="form-control">
+								<option value="">-SELECT-</option>
+								<option value="INR">INR</option>
+								<option value="USD">USD</option>
+							</select>
+
+						</div>
+						<div class="col-3"></div>
+
+					</div>
+
+					<div class="row">
+						<div class="col-4">
+							<label>Uom</label>
+						</div>
+						<div class="col-5">
+							<select th:field="*{uom.uomId}" class="form-control">
+								<option value="">-SELECT-</option>
+								<option th:each="p:${uoms}" th:value="${p.key}"
+									th:text="${p.value}"></option>
+							</select>
+
+						</div>
+						<div class="col-3"></div>
+
+					</div>
+					
+					<div class="row">
+						<div class="col-4">
+							<label>Order Code(Sale)</label>
+						</div>
+						<div class="col-5">
+							<select th:field="*{ordercodesale.orderId}" class="form-control">
+								<option value="">-SELECT-</option>
+								<option th:each="p:${orderSales}" th:value="${p.key}"
+									th:text="${p.value}"></option>
+							</select>
+
+						</div>
+						<div class="col-3"></div>
+
+					</div>
+					
+					<div class="row">
+						<div class="col-4">
+							<label>Order Code(Purchase)</label>
+						</div>
+						<div class="col-5">
+							<select th:field="*{ordercodepurchase.orderId}" class="form-control">
+								<option value="">-SELECT-</option>
+								<option th:each="p:${orderPurchases}" th:value="${p.key}"
+									th:text="${p.value}"></option>
+							</select>
+
+						</div>
+						<div class="col-3"></div>
+
+					</div>
+					
+
+					<!-- 5th row -->
+					<div class="row">
+						<div class="col-4">
+							<label>Part Description</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="*{partDescription}"
+								id="partDescription" class="form-control" />
+
+						</div>
+						<div class="col-4"></div>
+
+					</div>
+					<input type="submit" value="Register Part" class="form-control" />
+				</form>
+			</div>
+
+
+
+
+
+			<div class="card-footer">
+				<span th:text="${message}"></span>
+			</div>
+		</div>
+		</div>
+</body>
+</html>
